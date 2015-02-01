@@ -3,6 +3,7 @@ package cz.moro.sokrates.dao;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -48,13 +49,16 @@ public class UserDAO implements IUserDAO {
     @Override
     public User getUserById(int id) {
         Session session = this.sessionFactory.getCurrentSession();   
-        
+        /*Query query = session.createQuery(
+        		 "from User user left join fetch user.books where user.id = :id");
+        		 query.setInteger("id", id);
+        		 User user = (User) query.uniqueResult();*/
         User user = (User) session.get(User.class, id);
         //Lazy loading
-        if (user != null){
+       /* if (user != null){
         	Hibernate.initialize(user.getAccounts());
-        }  
-      logger.info(user.getAccounts().toString());
+        }*/
+        logger.debug(user.getAccounts().toString());
         return user;
     }
  

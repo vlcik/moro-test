@@ -51,7 +51,7 @@ public class UsersController {
 			throw new UserNotFoundException();
 		}
 		model.addAttribute("user", user);
-		logger.info(user.toString());
+		logger.debug(user.toString());
 		return "users/view";
 	}
 
@@ -60,7 +60,7 @@ public class UsersController {
 	public String listUsers(Model model) {
 		List<User> users = userService.listUsers();
 		model.addAttribute("users", users);
-		logger.info(users.toString());
+		logger.debug(users.toString());
 		return "users/index";
 	}
 
@@ -97,7 +97,10 @@ public class UsersController {
 			@ModelAttribute("user") @Valid User user, BindingResult result,
 			SessionStatus status) {
 		user.setId(id);
+		//phase 3
 		new UserValidator().validate(user, result);
+		
+		logger.debug(result.toString());
 		if (result.hasErrors()) {
 			return "users/addEditUser";
 		} else {

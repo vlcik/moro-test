@@ -2,6 +2,7 @@ package cz.moro.sokrates.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,13 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * Model class representing account entities in table/application
+ * 
+ * @author Juraj Vlk
+ *
+ */
+
 @Entity
 @Table(name = "accounts")
 public class Account {
@@ -24,7 +32,7 @@ public class Account {
 	private int id;
 	
 	@JoinColumn(name = "user_id")
-	@ManyToOne
+	@ManyToOne (fetch=FetchType.LAZY)
 	private User user;
 	
 	@Column(length = 4, name = "account_prefix")
@@ -44,6 +52,10 @@ public class Account {
 	@Size(min = 2, max = 4, message="Length of bank code must be between 2 and 4 letters.")
 	@Pattern(regexp = "[0-9]{2,4}", message="Bank code must be numbers.")
 	private String bankCode;
+
+	public Account() {
+		super();
+	}
 
 	public int getId() {
 		return id;

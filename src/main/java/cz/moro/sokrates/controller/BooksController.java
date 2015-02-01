@@ -54,7 +54,7 @@ public class BooksController {
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String processCreationForm(@PathVariable("user_id") Integer userId, @ModelAttribute("book") @Valid Book book, BindingResult result, SessionStatus status, Model model) {
 		book.setUser(new User(userId));
-		logger.info(result.toString());
+		logger.debug(result.toString());
         if (result.hasErrors()) {
         	model.addAttribute("user", userService.getUserById(userId));
             return "books/addEditBook";
@@ -78,7 +78,7 @@ public class BooksController {
 	public String processUpdateForm(@PathVariable("user_id") Integer userId, @PathVariable Integer id, @ModelAttribute("book") @Valid Book book, BindingResult result, SessionStatus status, Model model) {
 		book.setId(id);
 		book.setUser(new User(userId));
-		logger.info(result.toString());
+		logger.debug(result.toString());
         if (result.hasErrors()) {
         	model.addAttribute("user", userService.getUserById(userId));
             return "books/addEditBook";

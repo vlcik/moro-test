@@ -16,8 +16,8 @@
 			<!-- http://getbootstrap.com/examples/signin/ -->
 			<form action="j_spring_security_check" method="post" class="form-horizontal">
 				<h2 class="form-signin-heading">Please sign in</h2>
-				<input name="j_username" style="margin-bottom:10px;" class="form-control" placeholder="Name" />
-				<input name="j_password" type="password" id="inputPassword" style="margin-bottom:10px;" class="form-control" placeholder="Password"/>
+				<input name="username" style="margin-bottom:10px;" class="form-control" placeholder="Name" />
+				<input name="password" type="password" id="inputPassword" style="margin-bottom:10px;" class="form-control" placeholder="Password"/>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Signin</button>
 			</form>
 		</div>

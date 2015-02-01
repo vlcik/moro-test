@@ -13,6 +13,12 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * Model class representing book entities in table/application
+ * 
+ * @author Juraj Vlk
+ *
+ */
 @Entity
 @Table(name = "books")
 public class Book {

@@ -54,7 +54,7 @@ public class AccountsController {
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String processCreationForm(@PathVariable("user_id") Integer userId, @ModelAttribute("account") @Valid Account account, BindingResult result, SessionStatus status, Model model) {
 		account.setUser(new User(userId));
-		logger.info(result.toString());
+		logger.debug(result.toString());
         if (result.hasErrors()) {
         	model.addAttribute("user", userService.getUserById(userId));
             return "accounts/addEditAccount";
@@ -76,7 +76,7 @@ public class AccountsController {
 	
 	@RequestMapping(value = "edit/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
 	public String processUpdateForm(@PathVariable("user_id") Integer userId, @PathVariable Integer id, @ModelAttribute("account") @Valid Account account, BindingResult result, SessionStatus status, Model model) {
-		logger.info(result.toString());
+		logger.debug(result.toString());
 		account.setId(id);
 		account.setUser(new User(userId));
         if (result.hasErrors()) {

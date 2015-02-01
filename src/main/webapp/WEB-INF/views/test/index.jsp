@@ -16,7 +16,7 @@
 				<jsp:include page="../elements/menu.jsp" />
 			</div>
 			<div class="col-md-6">
-				<h1>Test data</h1>
+				<h1>Test data in phase 1</h1>
 				<h3>Title</h3>
 				<p>
 					<c:out value="${movie.title}" />

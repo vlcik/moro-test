@@ -23,7 +23,7 @@ public class UserCountInterceptor extends HandlerInterceptorAdapter {
             HttpServletResponse response, Object handler) throws Exception {
         
     	Long count = userService.getUserCount();
-        logger.info("Count: " + count.toString());
+        logger.debug("Count: " + count.toString());
         request.setAttribute("count", count.toString());
         //if returned false, we need to make sure 'response' is sent
         return true;

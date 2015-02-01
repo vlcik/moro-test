@@ -1,6 +1,5 @@
 package cz.moro.sokrates.validation;
 
-import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -15,12 +14,12 @@ public class UserValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-        User user = (User) target;
-        String name = user.getName();
-        // name validation
-        if (!StringUtils.hasLength(name)) {
-            errors.rejectValue("name", "required", "Field name is required");
-        }
+		User user = (User) target;
+
+		if (!user.getPassword().equals(user.getVerifiedPassword())) {
+			errors.rejectValue("verifiedPassword", "required",
+					"Passwords must match");
+		}
 
 	}
 

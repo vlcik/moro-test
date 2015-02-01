@@ -4,6 +4,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Entity class representing test data that is needed in phase 1
+ * @author Juraj Vlk
+ *
+ */
 public class Movie {
 
 	private int id;

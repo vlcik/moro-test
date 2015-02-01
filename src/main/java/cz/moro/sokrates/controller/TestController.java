@@ -1,6 +1,5 @@
 package cz.moro.sokrates.controller;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -69,7 +68,7 @@ public class TestController {
 		publishDate.set(1996, Calendar.JANUARY, 5);
 		Movie movie = new Movie(1, "Seven", "David Fincher", publishDate.getTime(), characters, actors);
 		
-		logger.info(movie.toString());
+		logger.debug(movie.toString());
 		model.addAttribute("movie", movie);
 		
 		return "test/index";

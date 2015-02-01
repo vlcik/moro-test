@@ -12,19 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="cz.moro.sokrates">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.beans">
-		<level value="error" />
-	</logger>
-
-	<logger name="org.springframework.web">
-		<level value="error" />
-	</logger>
-	
-	<logger name="org.springframework.security">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<!-- Root Logger -->

@@ -2,7 +2,7 @@
 	<li role="presentation"><a
 		href="/sokrates/admin/phase1/data"><span
 			class="glyphicon glyphicon-picture" aria-hidden="true"></span>&nbsp;&nbsp;Test data</a></li>
-	<li role="presentation" class="active"><a
+	<li role="presentation"><a
 		href="/sokrates/admin/users"><span
 			class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;Users</a></li>
 	<li role="presentation"><a href="/sokrates/admin/about"><span

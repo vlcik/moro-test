@@ -34,6 +34,7 @@
 					<div id="detail" class="tab-pane fade active">
 						<div style="margin: 20px 0px;">
 							<p><b>ID: </b> <c:out value="${user.id}" /></p>
+							<p><b>Username: </b> <c:out value="${user.username}" /></p>
 							<p><b>Name: </b> <c:out value="${user.name}" /></p>
 						</div>
 					</div>

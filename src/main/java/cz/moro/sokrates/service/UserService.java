@@ -3,13 +3,11 @@ package cz.moro.sokrates.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import cz.moro.sokrates.dao.IUserDAO;
 import cz.moro.sokrates.model.User;
 
 @Service
-@Transactional
 public class UserService implements IUserService {
 
 	private IUserDAO userDao;
