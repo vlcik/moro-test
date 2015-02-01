@@ -40,7 +40,7 @@ public class AccountsController {
 
 	@ExceptionHandler(AccountNotFoundException.class)
 	public String handleResourceNotFoundException() {
-		return "AccountNotFound";
+		return "elements/ItemNotFound";
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)

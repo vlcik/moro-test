@@ -31,8 +31,13 @@
 					<li><a href="#accounts">Accounts</a></li>
 				</ul>
 				<div class="tab-content">
-					<div id="detail" class="tab-pane fade">asdf</div>
-					<div id="books" class="tab-pane fade active">
+					<div id="detail" class="tab-pane fade active">
+						<div style="margin: 20px 0px;">
+							<p><b>ID: </b> <c:out value="${user.id}" /></p>
+							<p><b>Name: </b> <c:out value="${user.name}" /></p>
+						</div>
+					</div>
+					<div id="books" class="tab-pane fade">
 						<div style="margin: 20px 0px;">
 							<a href="/sokrates/admin/users/${user.id}/books/add">
 								<button type="button" class="btn btn-success">

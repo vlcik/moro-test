@@ -40,7 +40,7 @@ public class BooksController {
 
 	@ExceptionHandler(BookNotFoundException.class)
 	public String handleResourceNotFoundException() {
-		return "BookNotFound";
+		return "elements/ItemNotFound";
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)

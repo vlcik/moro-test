@@ -9,6 +9,7 @@ public interface IUserDAO {
     public void addUser(User p);
     public void updateUser(User p);
     public List<User> listUsers();
+    public Long getUserCount();
     public User getUserById(int id);
     public void removeUser(int id);
 }

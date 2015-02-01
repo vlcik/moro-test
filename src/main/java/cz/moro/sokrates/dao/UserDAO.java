@@ -5,7 +5,9 @@ import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Projections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +19,8 @@ import cz.moro.sokrates.model.User;
 public class UserDAO implements IUserDAO {
  
     private SessionFactory sessionFactory;
+    
+    private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
      
     public void setSessionFactory(SessionFactory sf){
         this.sessionFactory = sf;
@@ -45,9 +49,12 @@ public class UserDAO implements IUserDAO {
     public User getUserById(int id) {
         Session session = this.sessionFactory.getCurrentSession();   
         
-        User user = (User) session.createCriteria(User.class).add(Restrictions.idEq(id)).uniqueResult();  
-        Hibernate.initialize(user.getAccounts());  
-      
+        User user = (User) session.get(User.class, id);
+        //Lazy loading
+        if (user != null){
+        	Hibernate.initialize(user.getAccounts());
+        }  
+      logger.info(user.getAccounts().toString());
         return user;
     }
  
@@ -59,5 +66,10 @@ public class UserDAO implements IUserDAO {
             session.delete(u);
         }
     }
+
+	@Override
+	public Long getUserCount() {
+		return (Long) this.sessionFactory.getCurrentSession().createCriteria(User.class).setProjection(Projections.rowCount()).uniqueResult();
+	}
  
 }

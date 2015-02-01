@@ -9,39 +9,40 @@ import cz.moro.sokrates.dao.IUserDAO;
 import cz.moro.sokrates.model.User;
 
 @Service
+@Transactional
 public class UserService implements IUserService {
 
-	private IUserDAO UserDAO;
+	private IUserDAO userDao;
 	 
-    public void setUserDAO(IUserDAO UserDAO) {
-        this.UserDAO = UserDAO;
+    public void setUserDao(IUserDAO userDao) {
+        this.userDao = userDao;
     }
  
-    @Transactional
     public void addUser(User p) {
-        this.UserDAO.addUser(p);
+        this.userDao.addUser(p);
     }
  
-    @Transactional
     public void updateUser(User p) {
-        this.UserDAO.updateUser(p);
+        this.userDao.updateUser(p);
     }
  
     @Override
-    @Transactional
     public List<User> listUsers() {
-        return this.UserDAO.listUsers();
+        return this.userDao.listUsers();
     }
  
     @Override
-    @Transactional
     public User getUserById(int id) {
-        return this.UserDAO.getUserById(id);
+        return this.userDao.getUserById(id);
     }
  
     @Override
-    @Transactional
     public void removeUser(int id) {
-        this.UserDAO.removeUser(id);
+        this.userDao.removeUser(id);
     }
+
+	@Override
+	public Long getUserCount() {
+		return this.userDao.getUserCount();
+	}
 }

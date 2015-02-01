@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -29,10 +31,13 @@ public class User {
 	@Size(min = 2, max = 255, message="Length of a name must be between 2 and 255 letters.")
 	private String name;
 	
+	private String password;
+	
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<Book> books;
 	
 	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	@Fetch(FetchMode.SELECT)
 	private List<Account> accounts;
 
 	public User(){}
@@ -55,6 +60,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getPassword() {
+		return name;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public List<Book> getBooks() {

@@ -22,6 +22,10 @@
 	<logger name="org.springframework.web">
 		<level value="error" />
 	</logger>
+	
+	<logger name="org.springframework.security">
+		<level value="info" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>
