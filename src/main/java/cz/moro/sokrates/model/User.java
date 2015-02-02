@@ -57,11 +57,11 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Account> accounts;
 
-	@OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToOne
 	@JoinColumn(name = "favourite_book_id")
 	private Book favouriteBook;
 	
-	@OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToOne
 	@JoinColumn(name = "favourite_account_id")
 	private Account favouriteAccount;
 	
