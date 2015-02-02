@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -27,11 +28,11 @@
 
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#detail">Personal info</a></li>
-					<li><a href="#books">Books</a></li>
-					<li><a href="#accounts">Accounts</a></li>
+					<li class=""><a href="#books">Books</a></li>
+					<li class=""><a href="#accounts">Accounts</a></li>
 				</ul>
 				<div class="tab-content">
-					<div id="detail" class="tab-pane fade active">
+					<div id="detail" class="tab-pane fade in active">
 						<div style="margin: 20px 0px;">
 							<p><b>ID: </b> <c:out value="${user.id}" /></p>
 							<p><b>Username: </b> <c:out value="${user.username}" /></p>
@@ -51,7 +52,8 @@
 							<table class="table table-striped">
 								<tr>
 									<th>ID</th>
-									<th>title</th>
+									<th>Title</th>
+									<th>Description</th>
 									<th class="text-right">Action</th>
 								</tr>
 
@@ -59,6 +61,7 @@
 									<tr>
 										<td><c:out value="${book.id}" /></td>
 										<td><c:out value="${book.title}" /></td>
+										<td><c:out value="${fn:substring(book.description, 0, 50)}"/></td>
 										<td>
 											<div class="dropdown pull-right">
 												<a id="dLabel" role="button" data-toggle="dropdown"
@@ -142,6 +145,7 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$('.nav-tabs a:first').tab('show');
 			$('.nav-tabs a').click(function(e) {
 				e.preventDefault();
 				$(this).tab('show');

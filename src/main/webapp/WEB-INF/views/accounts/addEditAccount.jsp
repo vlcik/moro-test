@@ -36,37 +36,37 @@
 					class="form-horizontal" role="form">
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Prefix: </label>
-						<div class="col-xs-10">
-							<form:input path="prefix" value="" />
+						<div class="col-xs-5">
+							<form:input path="prefix" class="form-control" value="" />
 						</div>
-						<div class="col-xs-10">
+						<div class="col-xs-5">
 							<form:errors path="prefix" cssClass="alert-danger" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Number: </label>
-						<div class="col-xs-10">
-							<form:input path="number" value="" />
+						<div class="col-xs-5">
+							<form:input path="number" class="form-control" value="" />
 						</div>
-						<div class="col-xs-10">
+						<div class="col-xs-5">
 							<form:errors path="number" cssClass="alert-danger" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Bank: </label>
-						<div class="col-xs-10">
-							<form:input path="bankCode" value="" />
+						<div class="col-xs-5">
+							<form:input path="bankCode" class="form-control" value="" />
 						</div>
-						<div class="col-xs-10">
+						<div class="col-xs-5">
 							<form:errors path="bankCode" cssClass="alert-danger" />
 						</div>
 					</div>
 
 					<div class="form-actions">
-						<div class="col-sm-10">
-							<button type="submit">${action}</button>
+						<div class="col-sm-5">
+							<button class="btn btn-default" type="submit">${action}</button>
 						</div>
 
 					</div>

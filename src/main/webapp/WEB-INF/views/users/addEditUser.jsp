@@ -37,20 +37,20 @@
 						<div class="form-group">
 							<label for="name" class="col-sm-2 text-left control-label">Username:
 							</label>
-							<div class="col-xs-10">
-								<form:input path="username" value=""/>
+							<div class="col-xs-5">
+								<form:input path="username" class="form-control" value=""/>
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-5">
 								<form:errors path="username" cssClass="alert-danger" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="name" class="col-sm-2 text-left control-label">Name:
 							</label>
-							<div class="col-xs-10">
-								<form:input path="name" value=""/>
+							<div class="col-xs-5">
+								<form:input path="name" class="form-control" value=""/>
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-5">
 								<form:errors path="name" cssClass="alert-danger" />
 							</div>
 						</div>
@@ -58,10 +58,10 @@
 						<div class="form-group">
 							<label for="password" class="col-sm-2 text-left control-label">Password:
 							</label>
-							<div class="col-xs-10">
-								<form:password path="password" value=""/>
+							<div class="col-xs-5">
+								<form:password path="password" class="form-control" value=""/>
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-5">
 								<form:errors path="password" cssClass="alert-danger" />
 							</div>
 						</div>
@@ -69,17 +69,17 @@
 						<div class="form-group">
 							<label for="verifiedPassword" class="col-sm-2 text-left control-label">Verification:
 							</label>
-							<div class="col-xs-10">
-								<form:password path="verifiedPassword" value=""/>
+							<div class="col-xs-5">
+								<form:password path="verifiedPassword" class="form-control" value=""/>
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-5">
 								<form:errors path="verifiedPassword" cssClass="alert-danger" />
 							</div>
 						</div>
 
 						<div class="form-actions">
 							<div class="col-sm-5">
-								<button type="submit">${action}</button>
+								<button class="btn btn-default" type="submit">${action}</button>
 							</div>
 
 						</div>

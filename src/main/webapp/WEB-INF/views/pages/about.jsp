@@ -17,7 +17,7 @@
 					About
 				</h1>
 				<p>
-					Project has been created by <a href="au.linkedin.com/in/jurajvlk">Juraj Vlk</a> as an assignment test for <a href="http://www.morosystems.cz/">Morosystems</a>.
+					Project has been created by <a href="http://au.linkedin.com/in/jurajvlk">Juraj Vlk</a> as an assignment test for <a href="http://www.morosystems.cz/">Morosystems</a>.
 				</p>
 			</div>
 		</div>

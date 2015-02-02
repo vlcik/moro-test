@@ -8,14 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import cz.moro.sokrates.validation.annotation.FieldsMatch;
@@ -59,9 +56,7 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Book> books;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@Fetch(FetchMode.SELECT)
-	@JoinColumn(name = "user_id")
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Account> accounts;
 
 	public User() {

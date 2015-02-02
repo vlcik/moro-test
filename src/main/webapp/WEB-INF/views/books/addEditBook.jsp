@@ -38,10 +38,10 @@
 						<div class="form-group">
 							<label for="name" class="col-sm-2 control-label">Title:
 							</label>
-							<div class="col-xs-10">
-								<form:input path="title" value=""/>
+							<div class="col-xs-5">
+								<form:input path="title" class="form-control" value=""/>
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-5">
 								<form:errors path="title" cssClass="alert-danger" />
 							</div>
 						</div>
@@ -49,17 +49,17 @@
 						<div class="form-group">
 							<label for="name" class="col-sm-2 control-label">Description:
 							</label>
-							<div class="col-xs-10">
-								<form:textarea path="description" value=""/>
+							<div class="col-xs-8">
+								<form:textarea path="description" class="form-control" value=""/>
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-8">
 								<form:errors path="description" cssClass="alert-danger" />
 							</div>
 						</div>
 
 						<div class="form-actions">
 							<div class="col-sm-5">
-								<button type="submit">${action}</button>
+								<button class="btn btn-default" type="submit">${action}</button>
 							</div>
 
 						</div>
