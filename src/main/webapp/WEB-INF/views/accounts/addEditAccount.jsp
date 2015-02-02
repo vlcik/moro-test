@@ -38,8 +38,6 @@
 						<label for="name" class="col-sm-2 control-label">Prefix: </label>
 						<div class="col-xs-5">
 							<form:input path="prefix" class="form-control" value="" />
-						</div>
-						<div class="col-xs-5">
 							<form:errors path="prefix" cssClass="alert-danger" />
 						</div>
 					</div>
@@ -48,8 +46,6 @@
 						<label for="name" class="col-sm-2 control-label">Number: </label>
 						<div class="col-xs-5">
 							<form:input path="number" class="form-control" value="" />
-						</div>
-						<div class="col-xs-5">
 							<form:errors path="number" cssClass="alert-danger" />
 						</div>
 					</div>
@@ -57,9 +53,7 @@
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Bank: </label>
 						<div class="col-xs-5">
-							<form:input path="bankCode" class="form-control" value="" />
-						</div>
-						<div class="col-xs-5">
+							<form:input path="bankCode" class="form-control" />
 							<form:errors path="bankCode" cssClass="alert-danger" />
 						</div>
 					</div>

@@ -37,6 +37,11 @@
 							<p><b>ID: </b> <c:out value="${user.id}" /></p>
 							<p><b>Username: </b> <c:out value="${user.username}" /></p>
 							<p><b>Name: </b> <c:out value="${user.name}" /></p>
+							<p><b>Favourite book: </b> <c:out value="${user.favouriteBook.title}" /></p>
+							<p>
+								<b>Favourite account: </b> 
+								<c:out value="${user.favouriteAccount.prefix}" />&nbsp;<c:out value="${user.favouriteAccount.number}" />/<c:out value="${user.favouriteAccount.bankCode}" />
+							</p>
 						</div>
 					</div>
 					<div id="books" class="tab-pane fade">

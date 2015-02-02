@@ -40,8 +40,6 @@
 							</label>
 							<div class="col-xs-5">
 								<form:input path="title" class="form-control" value=""/>
-							</div>
-							<div class="col-xs-5">
 								<form:errors path="title" cssClass="alert-danger" />
 							</div>
 						</div>
@@ -51,8 +49,6 @@
 							</label>
 							<div class="col-xs-8">
 								<form:textarea path="description" class="form-control" value=""/>
-							</div>
-							<div class="col-xs-8">
 								<form:errors path="description" cssClass="alert-danger" />
 							</div>
 						</div>
