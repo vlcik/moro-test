@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
+import cz.moro.sokrates.dao.editor.AccountEditor;
+import cz.moro.sokrates.dao.editor.BookEditor;
 import cz.moro.sokrates.exception.UserNotFoundException;
+import cz.moro.sokrates.model.Account;
+import cz.moro.sokrates.model.Book;
 import cz.moro.sokrates.model.User;
+import cz.moro.sokrates.service.IAccountService;
+import cz.moro.sokrates.service.IBookService;
 import cz.moro.sokrates.service.IUserService;
 import cz.moro.sokrates.validation.UserValidator;
 
@@ -32,11 +40,18 @@ import cz.moro.sokrates.validation.UserValidator;
  *
  */
 @Controller
+@Transactional
 public class UsersController {
 
 	@Autowired
 	private IUserService userService;
 	
+	@Autowired
+	private IBookService bookService;
+	
+	@Autowired
+	private IAccountService accountService;
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -79,9 +94,9 @@ public class UsersController {
 	public String processCreationForm(@ModelAttribute("user") @Valid User user,
 			BindingResult result, SessionStatus status) {
 		new UserValidator().validate(user, result);
-		
+
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
+
 		if (result.hasErrors()) {
 			return "users/addEditUser";
 		} else {
@@ -94,7 +109,10 @@ public class UsersController {
 	@RequestMapping(value = "/admin/users/edit/{id}", method = RequestMethod.GET)
 	public String initUpdateForm(@PathVariable Integer id, Model model) {
 		model.addAttribute("isNew", false);
+		logger.debug(bookService.getUserListBooks(id).toString());
 		model.addAttribute("user", userService.getUserById(id));
+		model.addAttribute("books", bookService.getUserListBooks(id));
+		model.addAttribute("accounts", accountService.getUserListAccounts(id));
 		return "users/addEditUser";
 	}
 
@@ -102,15 +120,18 @@ public class UsersController {
 			RequestMethod.PUT, RequestMethod.POST })
 	public String processUpdateForm(@PathVariable Integer id,
 			@ModelAttribute("user") @Valid User user, BindingResult result,
-			SessionStatus status) {
+			SessionStatus status, Model model) {
 		user.setId(id);
-		//phase 3
+		logger.debug(user.toString());
+		// phase 3
 		new UserValidator().validate(user, result);
-		
+
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
+
 		logger.debug(result.toString());
 		if (result.hasErrors()) {
+			model.addAttribute("books", bookService.getUserListBooks(id));
+			model.addAttribute("accounts", accountService.getUserListAccounts(id));
 			return "users/addEditUser";
 		} else {
 			this.userService.updateUser(user);
@@ -131,10 +152,18 @@ public class UsersController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginForm(@RequestParam(value="login_error", required=false) Integer error, Model model) {
-		if ((error != null) && (error == 1)){
+	public String loginForm(
+			@RequestParam(value = "login_error", required = false) Integer error,
+			Model model) {
+		if ((error != null) && (error == 1)) {
 			model.addAttribute("error", "true");
 		}
 		return "login";
+	}
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Book.class, "favouriteBook", new BookEditor(bookService));
+		binder.registerCustomEditor(Account.class, "favouriteAccount", new AccountEditor(accountService));
 	}
 }

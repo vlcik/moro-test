@@ -8,7 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
@@ -55,6 +57,14 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Account> accounts;
 
+	@OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+	@JoinColumn(name = "favourite_book_id")
+	private Book favouriteBook;
+	
+	@OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+	@JoinColumn(name = "favourite_account_id")
+	private Account favouriteAccount;
+	
 	public User() {
 	}
 
@@ -118,13 +128,29 @@ public class User {
 		this.verifiedPassword = verifiedPassword;
 	}
 
+	public Book getFavouriteBook() {
+		return favouriteBook;
+	}
+
+	public void setFavouriteBook(Book favouriteBook) {
+		this.favouriteBook = favouriteBook;
+	}
+
+	public Account getFavouriteAccount() {
+		return favouriteAccount;
+	}
+
+	public void setFavouriteAccount(Account favouriteAccount) {
+		this.favouriteAccount = favouriteAccount;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", username=" + username
 				+ ", password=" + password + ", verifiedPassword="
 				+ verifiedPassword + ", books=" + books + ", accounts="
-				+ accounts + "]";
+				+ accounts + ", favouriteBook=" + favouriteBook
+				+ ", favouriteAccount=" + favouriteAccount + "]";
 	}
 
 }

@@ -11,5 +11,5 @@ public interface IBookService {
     public List<Book> listBooks();
     public Book getBookById(int id);
     public void removeBook(int id);
-     
+    public List<Book> getUserListBooks(int id); 
 }

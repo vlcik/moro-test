@@ -99,7 +99,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", name=" + user.getName() + ", prefix="
+		return "Account [id=" + id + ", prefix="
 				+ prefix + ", number=" + number
 				+ ", bankCode=" + bankCode + "]";
 	}

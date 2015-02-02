@@ -58,6 +58,7 @@ public class UserDAO implements IUserDAO {
 		
 		if (user != null) {
 			Hibernate.initialize(user.getAccounts());
+			//Hibernate.initialize(user.getFavouriteBook());
 		}
 		
 		logger.debug(user.toString());

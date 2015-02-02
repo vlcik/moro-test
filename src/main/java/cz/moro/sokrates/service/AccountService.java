@@ -44,4 +44,9 @@ public class AccountService implements IAccountService {
     public void removeAccount(int id) {
         this.AccountDAO.removeAccount(id);
     }
+
+	@Override
+	public List<Account> getUserListAccounts(int id) {
+		return this.AccountDAO.getUserListAccounts(id);
+	}
 }

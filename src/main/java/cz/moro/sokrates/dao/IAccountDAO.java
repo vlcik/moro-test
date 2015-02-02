@@ -11,4 +11,5 @@ public interface IAccountDAO {
     public List<Account> listAccounts();
     public Account getAccountById(int id);
     public void removeAccount(int id);
+    public List<Account> getUserListAccounts(int id);
 }

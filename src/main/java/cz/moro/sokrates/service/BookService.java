@@ -11,37 +11,41 @@ import cz.moro.sokrates.model.Book;
 @Service
 public class BookService implements IBookService {
 
-	private IBookDAO BookDAO;
+	private IBookDAO bookDAO;
 	 
-    public void setBookDAO(IBookDAO BookDAO) {
-        this.BookDAO = BookDAO;
+    public void setbookDAO(IBookDAO bookDAO) {
+        this.bookDAO = bookDAO;
     }
  
     @Transactional
     public void addBook(Book b) {
-        this.BookDAO.addBook(b);
+        this.bookDAO.addBook(b);
     }
  
     @Transactional
     public void updateBook(Book b) {
-        this.BookDAO.updateBook(b);
+        this.bookDAO.updateBook(b);
     }
  
     @Override
     @Transactional
     public List<Book> listBooks() {
-        return this.BookDAO.listBooks();
+        return this.bookDAO.listBooks();
     }
  
     @Override
     @Transactional
     public Book getBookById(int id) {
-        return this.BookDAO.getBookById(id);
+        return this.bookDAO.getBookById(id);
     }
  
     @Override
     @Transactional
     public void removeBook(int id) {
-        this.BookDAO.removeBook(id);
+        this.bookDAO.removeBook(id);
+    }
+    
+    public List<Book> getUserListBooks(int id) {
+    	return this.bookDAO.getUserListBooks(id);
     }
 }
