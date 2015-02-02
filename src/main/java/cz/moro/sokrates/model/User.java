@@ -15,8 +15,6 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import cz.moro.sokrates.validation.annotation.FieldsMatch;
-
 /**
  * Model class representing account user in table/application
  * 
@@ -26,9 +24,6 @@ import cz.moro.sokrates.validation.annotation.FieldsMatch;
 
 @Entity
 @Table(name = "users")
-@FieldsMatch.List({
-    @FieldsMatch(first = "password", second = "verifiedPassword", message = "The password fields must match")
-})
 public class User {
 
 	@Id
@@ -43,11 +38,12 @@ public class User {
 
 	@Column(length = 255)
 	@NotEmpty(message = "Username cannot be empty.")
-	@Size(min = 2, max = 255, message = "Length of a username must be between 2 and 255 letters.")
+	@Size(min = 2, max = 255, message = "Length of a username must be between 2 and 255 characters.")
 	private String username;
 
 	@Column(name = "password")
 	@NotEmpty(message = "Password cannot be empty.")
+	@Size(min = 6, message = "Password must contain at least 6 characters.")
 	private String password;
 
 	@Transient
