@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -35,6 +36,9 @@ public class UsersController {
 
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(UsersController.class);
@@ -75,6 +79,9 @@ public class UsersController {
 	public String processCreationForm(@ModelAttribute("user") @Valid User user,
 			BindingResult result, SessionStatus status) {
 		new UserValidator().validate(user, result);
+		
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
 		if (result.hasErrors()) {
 			return "users/addEditUser";
 		} else {
@@ -99,6 +106,8 @@ public class UsersController {
 		user.setId(id);
 		//phase 3
 		new UserValidator().validate(user, result);
+		
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		logger.debug(result.toString());
 		if (result.hasErrors()) {

@@ -27,16 +27,21 @@
 
 	<security:authentication-manager>
 		<security:authentication-provider>
-			 <!-- <security:user-service> <security:user name="${name}" password="${password}" 
-				authorities="ROLE_USER" /> </security:user-service>-->
-			 <security:jdbc-user-service
+			<!-- <security:user-service> <security:user name="${name}" password="${password}" 
+				authorities="ROLE_USER" /> </security:user-service> -->
+				<security:password-encoder ref="encoder" />
+			<security:jdbc-user-service
 				data-source-ref="dataSource"
-				users-by-username-query="select username, password, TRUE from users where username=?" 
-				authorities-by-username-query="select username, 'ROLE_USER' from users where username=?"
-				/>
+				users-by-username-query="select username, password, TRUE from users where username=?"
+				authorities-by-username-query="select username, 'ROLE_USER' from users where username=?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
 	<bean id="loggerListener"
 		class="org.springframework.security.authentication.event.LoggerListener" />
+
+	<bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" >
+	<constructor-arg name="strength" value="11" />
+	</bean>
 </beans>
