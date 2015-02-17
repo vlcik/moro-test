@@ -2,18 +2,22 @@ package cz.moro.sokrates.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cz.moro.sokrates.dao.IBookDAO;
 import cz.moro.sokrates.model.Book;
+import cz.moro.sokrates.service.IBookService;
 
 @Service
 public class BookService implements IBookService {
 
+	
 	private IBookDAO bookDAO;
 	 
-    public void setbookDAO(IBookDAO bookDAO) {
+	@Autowired
+    public void setBookDAO(IBookDAO bookDAO) {
         this.bookDAO = bookDAO;
     }
  
